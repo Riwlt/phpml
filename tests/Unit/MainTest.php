@@ -13,8 +13,9 @@ class MainTest extends TestCase
     {
         $main = new DataExtractor();
 
-//        $main->extract();
+        $value = $main->extract();
 
-        $this->assertEquals(0, 0);
+        // Returns empty if successful, will export a .csv file
+        $this->assertEquals([], $value);
     }
 }
