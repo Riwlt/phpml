@@ -26,7 +26,7 @@ class LearnNumbersCommand extends Command
 
         $extractor = new DataExtractor();
 
-//        $extractor->extract();
+        $extractor->extract();
 
         echo 'finished'."\n";
         echo microtime(true) - $startTime;
