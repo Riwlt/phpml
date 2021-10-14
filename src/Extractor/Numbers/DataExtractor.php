@@ -33,6 +33,31 @@ class DataExtractor implements DataExtractorInterface
                 $labels[] = "#$label";
             }
         }
+        $dataset = new Labeled($samples, $labels);
+
+        $batchSize = 1024;
+
+        $estimator = new PersistentModel(
+            new Pipeline([
+                new ImageResizer(28, 28),
+                new ImageVectorizer(true),
+                new ZScaleStandardizer(),
+            ], new MultilayerPerceptron([
+                new Dense(100),
+                new Activation(new LeakyReLU()),
+                new Dropout(0.2),
+                new Dense(100),
+                new Activation(new LeakyReLU()),
+                new Dropout(0.2),
+                new Dense(100),
+                new Activation(new LeakyReLU()),
+                new Dropout(0.2),
+            ],
+                $batchSize,
+                new Adam(0.0001))),
+            new Filesystem('mnist.rbx', true)
+        );
+
         //TODO: implement
         return [];
     }
