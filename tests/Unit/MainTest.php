@@ -9,4 +9,12 @@ use PHPUnit\Framework\TestCase;
 
 class MainTest extends TestCase
 {
+    public function testIfWorking():void
+    {
+        $main = new DataExtractor();
+
+//        $main->extract();
+
+        $this->assertEquals(0, 0);
+    }
 }
