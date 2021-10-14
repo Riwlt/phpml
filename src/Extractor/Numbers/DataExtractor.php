@@ -58,7 +58,13 @@ class DataExtractor implements DataExtractorInterface
             new Filesystem('mnist.rbx', true)
         );
 
-        //TODO: implement
+        /** @var PersistentModel $estimator */
+        $estimator->train($dataset);
+
+        $extractor = new CSV('progress.csv', true);
+
+        $extractor->export($estimator->steps());
+
         return [];
     }
 }
