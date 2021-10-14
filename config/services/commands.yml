@@ -1,0 +1,10 @@
+services:
+  _defaults:
+    public: true
+    autowire: true
+    autoconfigure: true
+
+  App\Command\:
+    resource: '%kernel.project_dir%/src/Command/*'
+
+  App\Command\LearnNumbersCommand: ~
